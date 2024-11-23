@@ -19,18 +19,21 @@ click = st.button("Process")
 try:
     global job_description
     with pdfplumber.open(uploadedJD) as pdf:
-        pages = pdf.pages[0]
-        job_description = pages.extract_text()
+        job_description = ""
+        for page in pdf.pages:
+            job_description += page.extract_text() + "\n"  # Concatenate text from all pages
 except:
     st.write("Failed to process Job Description")
 
 try:
     global resume
     with pdfplumber.open(uploadedResume) as pdf:
-        pages = pdf.pages[0]
-        resume = pages.extract_text()
+        resume = ""
+        for page in pdf.pages:
+            resume += page.extract_text() + "\n"  # Concatenate text from all pages
 except:
     st.write("Failed to process resume")
+
 
 def getResult(JD_txt, resume_txt):
     content = [JD_txt, resume_txt]
