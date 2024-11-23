@@ -22,8 +22,8 @@ try:
         job_description = ""
         for page in pdf.pages:
             job_description += page.extract_text() + "\n"  # Concatenate text from all pages
-except:
-    st.write("Failed to process Job Description")
+# except:
+#     st.write("Failed to process Job Description")
 
 try:
     global resume
@@ -31,8 +31,8 @@ try:
         resume = ""
         for page in pdf.pages:
             resume += page.extract_text() + "\n"  # Concatenate text from all pages
-except:
-    st.write("Failed to process resume")
+# except:
+#     st.write("Failed to process resume")
 
 
 def getResult(JD_txt, resume_txt):
